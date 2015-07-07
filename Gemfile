@@ -34,6 +34,8 @@ gem 'settingslogic'
 # Twitter
 gem 'twitter'
 
+gem 'dotenv-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
