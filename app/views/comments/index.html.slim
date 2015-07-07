@@ -3,7 +3,9 @@ h1 Listing comments
 table
   thead
     tr
-      th User
+      th
+      th Name
+      th Twitter
       th Comments
       th
       th
@@ -12,7 +14,9 @@ table
   tbody
     - @comments.each do |comment|
       tr
-        td = comment.user_id
+        td = image_tag comment.user.profile_image_url
+        td = comment.user.name
+        td = comment.user.screen_name
         td = comment.comments
         td = link_to 'Show', comment
         td = link_to 'Edit', edit_comment_path(comment)
