@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -53,6 +54,12 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  root 'comments#index'
+
+  resources :user do
+    post 'add'
+  end
 
   get '/auth/:provider/callback', :to => 'sessions#callback'
   post '/auth/:provider/callback', :to => 'sessions#callback'
