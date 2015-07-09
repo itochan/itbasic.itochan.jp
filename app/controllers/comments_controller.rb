@@ -5,6 +5,13 @@ class CommentsController < ApplicationController
   # GET /comments.json
   def index
     @comments = Comment.all
+
+    if Comment.exists?(user_id: current_user.id)
+      @comment = current_user.comment
+    else
+      @comment = Comment.new
+      @comment.user_id = current_user.id
+    end
   end
 
   # GET /comments/1
