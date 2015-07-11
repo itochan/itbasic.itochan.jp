@@ -10,5 +10,9 @@
 
   = f.hidden_field :user_id
   .field
+    = f.select :entrance_year, Hash[(2014..Time.now.year).map { |y| [y, y] }]
+  .field
+    = f.select :itbasic_class, Hash[(1..30).map { |c| [c, c] }]
+  .field
     = f.text_field :comments
   .actions = f.submit 'コメント'
