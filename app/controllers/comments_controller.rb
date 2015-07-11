@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
 
+    return if current_user == nil
+
     if Comment.exists?(user_id: current_user.id)
       @comment = current_user.comment
     else

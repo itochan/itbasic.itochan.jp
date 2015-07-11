@@ -1,6 +1,7 @@
 h1 Listing comments
 
-= render 'form'
+- if current_user != nil
+  = render 'form'
 
 table
   thead
