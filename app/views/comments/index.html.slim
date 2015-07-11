@@ -23,7 +23,7 @@ table
         td = comment.entrance_year
         td = comment.itbasic_class
         td = comment.user.name
-        td = comment.user.screen_name
+        td = link_to comment.user.screen_name, "https://twitter.com/#{comment.user.screen_name}"
         td = comment.comments
         td = link_to 'Show', comment
         td = link_to 'Edit', edit_comment_path(comment)
