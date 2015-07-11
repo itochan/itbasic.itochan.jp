@@ -1,4 +1,4 @@
-h1 Listing comments
+h1 情報基礎1クラスのなかまたち
 
 - if current_user != nil
   = render 'form'
@@ -7,9 +7,11 @@ table
   thead
     tr
       th
-      th Name
+      th 入学年度
+      th クラス
+      th 名前
       th Twitter
-      th Comments
+      th コメント
       th
       th
       th
@@ -18,6 +20,8 @@ table
     - @comments.each do |comment|
       tr
         td = image_tag comment.user.profile_image_url
+        td = comment.entrance_year
+        td = comment.itbasic_class
         td = comment.user.name
         td = comment.user.screen_name
         td = comment.comments
