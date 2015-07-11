@@ -10,9 +10,12 @@
 
   = f.hidden_field :user_id
   .field
+    | 入学年度:&nbsp;
     = f.select :entrance_year, Hash[(2014..Time.now.year).map { |y| [y, y] }]
   .field
+    | クラス:&nbsp;
     = f.select :itbasic_class, Hash[(1..30).map { |c| [c, c] }]
+    | &nbsp;組
   .field
     = f.text_field :comments
   .actions = f.submit 'コメント'
