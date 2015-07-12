@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.order(created_at: :desc)
 
     return if current_user == nil
 
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    @comments = Comment.all
+    @comments = Comment.order(created_at: :desc)
 
     return if current_user == nil
 
