@@ -18,4 +18,7 @@
     | &nbsp;組
   .field
     = f.text_field :comments
+  .field
+    = f.check_box :ask_line
+    | LINEを聞かれてもいい
   .actions = f.submit 'コメント'
