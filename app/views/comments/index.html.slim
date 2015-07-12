@@ -5,6 +5,14 @@ h1 情報基礎1クラスのなかまたち
 - else
   = render 'form'
 
+p
+  = form_tag '/comments/search', method: 'get'
+    = select_tag :year, options_for_select(Hash[(2014..Time.now.year).map { |y| [y, y] }], @year || Time.now.year)
+    | 年&nbsp;
+    = select_tag :class, options_for_select(Hash[(1..30).map { |c| [c, c] }], @class || 5)
+    | &nbsp;組&nbsp;
+    = submit_tag '検索'
+
 table
   thead
     tr

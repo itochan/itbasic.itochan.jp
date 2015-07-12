@@ -8,6 +8,29 @@ class CommentsController < ApplicationController
 
     return if current_user == nil
 
+    @comment = find_or_create_comment
+  end
+
+  # GET /comments/search/:year/:class
+  def search
+    if params.has_key?(:commit)
+      redirect_to year: params[:year], class: params[:class]
+      return
+    end
+
+    @comments = Comment.where(entrance_year: params[:year], itbasic_class: params[:class])
+    @comment = find_or_create_comment
+    @year = params[:year]
+    @class = params[:class]
+
+    render :index
+  end
+
+  def index
+    @comments = Comment.all
+
+    return if current_user == nil
+
     if Comment.exists?(user_id: current_user.id)
       @comment = current_user.comment
     else
@@ -79,5 +102,14 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:user_id, :comments, :entrance_year, :itbasic_class, :ask_line)
+    end
+
+    def find_or_create_comment
+      if Comment.exists?(user_id: current_user.id)
+        @comment = current_user.comment
+      else
+        @comment = Comment.new
+        @comment.user_id = current_user.id
+      end
     end
 end
