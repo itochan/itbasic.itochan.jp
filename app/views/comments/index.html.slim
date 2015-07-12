@@ -6,25 +6,23 @@ h1 情報基礎1クラスのなかまたち
 table
   thead
     tr
-      th
       th 入学年度
       th クラス
+      th
       th 名前
       th Twitter
       th コメント
-      th
-      th
       th
 
   tbody
     - @comments.each do |comment|
       tr
-        td = image_tag comment.user.profile_image_url
         td = comment.entrance_year
         td = comment.itbasic_class
+        td = image_tag comment.user.profile_image_url
         td = comment.user.name
         td = link_to comment.user.screen_name, "https://twitter.com/#{comment.user.screen_name}"
         td = comment.comments
-        td = link_to 'Show', comment
-        td = link_to 'Edit', edit_comment_path(comment)
-        td = link_to 'Destroy', comment, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td
+          - if comment.user.id == current_user.try(:id)
+            = link_to '削除', comment, data: {:confirm => 'Are you sure?'}, :method => :delete
