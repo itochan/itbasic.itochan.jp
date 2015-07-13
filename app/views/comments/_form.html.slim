@@ -14,8 +14,12 @@
     = f.select :entrance_year, Hash[(2014..Time.now.year).map { |y| [y, y] }], selected: Time.now.year
     = f.select :semester, { "春": 0, "秋": 1 }
   .field
-    | クラス:&nbsp;
+    | 情報基礎履修クラス:&nbsp;
     = f.select :itbasic_class, Hash[(1..30).map { |c| [c, c] }], selected: 5
+    | &nbsp;組
+  .field
+    | 自分のクラス:&nbsp;
+    = f.select :grade_class, Hash[(1..30).map { |c| [c, c] }], selected: 5
     | &nbsp;組
   .field
     = f.text_field :comments

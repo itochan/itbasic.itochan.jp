@@ -11,6 +11,7 @@ p
     | 年&nbsp;
     = select_tag :semester, options_for_select({ "春": 0, "秋": 1 }, @semester || 0)
     | 学期&nbsp;
+    | 情報基礎履修クラス
     = select_tag :class, options_for_select(Hash[(1..30).map { |c| [c, c] }], @class || 5)
     | &nbsp;組&nbsp;
     = submit_tag '検索'
@@ -22,6 +23,7 @@ table
     tr
       th 履修年度
       th 学期
+      th 履修クラス
       th クラス
       th
       th 名前
@@ -43,6 +45,7 @@ table
         td
           a.itbasic_class href="/comments/search/#{comment.entrance_year}/#{comment.itbasic_class}"
             = comment.itbasic_class
+        td = comment.grade_class
         td = image_tag comment.user.profile_image_url
         td = comment.user.name
         td = link_to comment.user.screen_name, "https://twitter.com/#{comment.user.screen_name}"

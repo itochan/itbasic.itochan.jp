@@ -102,7 +102,7 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:user_id, :comments, :entrance_year, :itbasic_class, :ask_line, :semester)
+      params.require(:comment).permit(:user_id, :comments, :entrance_year, :itbasic_class, :grade_class, :ask_line, :semester)
     end
 
     def find_or_create_comment
