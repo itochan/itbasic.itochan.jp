@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :comments do
     collection do
       get 'search'
-      get 'search/:year/:class' => 'comments#search'
+      get 'search/:year/:semester/:class' => 'comments#search'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

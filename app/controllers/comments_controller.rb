@@ -14,13 +14,14 @@ class CommentsController < ApplicationController
   # GET /comments/search/:year/:class
   def search
     if params.has_key?(:commit)
-      redirect_to year: params[:year], class: params[:class]
+      redirect_to year: params[:year], semester: params[:semester], class: params[:class]
       return
     end
 
-    @comments = Comment.where(entrance_year: params[:year], itbasic_class: params[:class]).order(created_at: :desc)
+    @comments = Comment.where(entrance_year: params[:year], semester: params[:semester], itbasic_class: params[:class]).order(created_at: :desc)
     @comment = find_or_create_comment
     @year = params[:year]
+    @semester = params[:semester]
     @class = params[:class]
 
     render :index
@@ -101,7 +102,7 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:user_id, :comments, :entrance_year, :itbasic_class, :ask_line)
+      params.require(:comment).permit(:user_id, :comments, :entrance_year, :itbasic_class, :ask_line, :semester)
     end
 
     def find_or_create_comment

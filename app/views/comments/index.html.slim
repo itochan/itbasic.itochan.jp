@@ -9,6 +9,8 @@ p
   = form_tag '#', method: 'get', onsubmit: 'search(); return false;'
     = select_tag :year, options_for_select(Hash[(2014..Time.now.year).map { |y| [y, y] }], @year || Time.now.year)
     | 年&nbsp;
+    = select_tag :semester, options_for_select({ "春": 0, "秋": 1 }, @semester || 0)
+    | 学期&nbsp;
     = select_tag :class, options_for_select(Hash[(1..30).map { |c| [c, c] }], @class || 5)
     | &nbsp;組&nbsp;
     = submit_tag '検索'
@@ -19,6 +21,7 @@ table
   thead
     tr
       th 履修年度
+      th 学期
       th クラス
       th
       th 名前
@@ -31,6 +34,12 @@ table
     - @comments.each do |comment|
       tr
         td = comment.entrance_year
+        td
+          - case comment.semester
+          - when 0
+            | 春
+          - when 1
+            | 秋
         td
           a.itbasic_class href="/comments/search/#{comment.entrance_year}/#{comment.itbasic_class}"
             = comment.itbasic_class
