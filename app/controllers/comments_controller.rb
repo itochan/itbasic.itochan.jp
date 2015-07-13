@@ -106,6 +106,8 @@ class CommentsController < ApplicationController
     end
 
     def find_or_create_comment
+      return if current_user == nil
+
       if Comment.exists?(user_id: current_user.id)
         @comment = current_user.comment
       else
