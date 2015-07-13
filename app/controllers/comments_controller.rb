@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
       return
     end
 
-    @comments = Comment.where(entrance_year: params[:year], itbasic_class: params[:class])
+    @comments = Comment.where(entrance_year: params[:year], itbasic_class: params[:class]).order(created_at: :desc)
     @comment = find_or_create_comment
     @year = params[:year]
     @class = params[:class]
