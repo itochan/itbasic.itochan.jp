@@ -29,7 +29,9 @@ table
     - @comments.each do |comment|
       tr
         td = comment.entrance_year
-        td = comment.itbasic_class
+        td
+          a.itbasic_class href="/comments/search/#{comment.entrance_year}/#{comment.itbasic_class}"
+            = comment.itbasic_class
         td = image_tag comment.user.profile_image_url
         td = comment.user.name
         td = link_to comment.user.screen_name, "https://twitter.com/#{comment.user.screen_name}"
