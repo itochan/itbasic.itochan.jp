@@ -12,6 +12,8 @@ p
     = select_tag :class, options_for_select(Hash[(1..30).map { |c| [c, c] }], @class || 5)
     | &nbsp;組&nbsp;
     = submit_tag '検索'
+    | &nbsp;
+    a href="/" 検索条件をリセット
 
 table
   thead
