@@ -45,6 +45,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
   gem 'rails_12factor'
+  gem 'puma'
 end
 
 group :development do
