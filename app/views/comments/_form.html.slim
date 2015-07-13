@@ -10,7 +10,7 @@
 
   = f.hidden_field :user_id
   .field
-    | 入学年度:&nbsp;
+    | 履修年度:&nbsp;
     = f.select :entrance_year, Hash[(2014..Time.now.year).map { |y| [y, y] }], selected: Time.now.year
   .field
     | クラス:&nbsp;
