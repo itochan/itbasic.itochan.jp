@@ -48,7 +48,7 @@ table
         td = comment.grade_class
         td = image_tag comment.user.profile_image_url
         td = comment.user.name
-        td = link_to comment.user.screen_name, "https://twitter.com/#{comment.user.screen_name}"
+        td = link_to comment.user.screen_name, "https://twitter.com/#{comment.user.screen_name}", "data-no-turbolink": true
         td = comment.comments
         td
           - if comment.ask_line?
